@@ -33,7 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 const userLocation = await getCurrentLocation();
                 const directionsData = await getDirections(userLocation, destination);
+                // Update AR elements
                 updateARDirections(directionsData);
+
+                // Update 2D map with route
+                updateMapWithRoute(userLocation, destination);
+
+                // Center 2D map on user's location
+                updateMapCenter(userLocation.latitude, userLocation.longitude);
             } catch (error) {
                 console.error('Error in retrieving position', error);
             }
@@ -67,10 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     destinationSelectButton.addEventListener('click', selectDestination);
 
-    // Function to update the 2D map with the route
+     // Function to update the 2D map with the route
     const updateMapWithRoute = (origin, destination) => {
         const directionsService = new google.maps.DirectionsService();
-        const directionsRenderer = new google.maps.DirectionsRenderer({ map: mapContainer });
+        const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
         directionsService.route(
             {
