@@ -12,19 +12,18 @@ body {
   display: flex;
   flex-direction: row; /* Arrange items horizontally */
   justify-content: space-between; /* Add space between items */
-  width: 90%; /* Adjust width for smaller screens */
-  max-width: 350px;
+  width: 100%; /* Adjust width for smaller screens */
+  max-width: 450px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
-  background-color: #fff;
   text-align: center;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  
 }
 
 select {
-  width: 65%; /* Adjust width for the dropdown */
-  padding: 10px;
+  width: 90%; /* Adjust width for the dropdown */
+  padding: 3px 60px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
@@ -34,11 +33,11 @@ select {
 }
 
 button {
-  width: 30%; /* Adjust width for the button */
+  width: 40%; /* Adjust width for the button */
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 1px 1px;
   border-radius: 5px;
   cursor: pointer;
 }
