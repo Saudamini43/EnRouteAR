@@ -6,7 +6,7 @@ const places = [
     { name: 'Civil Department', latitude: 12.356, longitude: 67.901 },
     { name: 'Computer Tech. Department', latitude: 12.356, longitude: 67.901 },
     { name: 'Electronics Department', latitude: 12.356, longitude: 67.901 },
-    { name: 'Gym/Stadium', latitude: 12.356, longitude: 67.901 },
+    { name: 'Gym/Stadium', latitude: 21.38644, longitude: 79.30428 },
     { name: 'Information Tech. Department', latitude: 12.356, longitude: 67.901 },
     { name: 'Jamuna Boys Hostel', latitude: 12.356, longitude: 67.901 },
     { name: 'Kaveri Girls Hostel', latitude: 12.356, longitude: 67.901 },
