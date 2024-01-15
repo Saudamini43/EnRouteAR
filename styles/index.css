@@ -1,59 +1,63 @@
-/* Basic styling for body and typography */
+/* General styling */
 body {
   font-family: sans-serif;
-  font-size: 16px;
   margin: 0;
-  background-color: #f5f5f5;
-  color: #333;
+  overflow: hidden; /* Prevents scrollbars */
 }
 
-/* Styling for destination selection container */
+/* Container for top elements */
 #destination-select-container {
   display: flex;
-  flex-direction: row; /* Arrange items horizontally */
-  justify-content: space-between; /* Add space between items */
-  width: 100%; /* Adjust width for smaller screens */
-  max-width: 450px;
-  margin: 0 auto;
+  align-items: center; /* Vertically align elements */
+  justify-content: space-between; /* Distribute elements evenly */
   padding: 5px;
-  border-radius: 10px;
-  text-align: center;
-  
+  background-color: #f0f0f0; /* Light gray background */
+  margin: 5px;
 }
 
-select {
-  width: 90%; /* Adjust width for the dropdown */
-  padding: 3px 60px;
+#destination-select-container select,
+#get-direction-button {
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  padding: 5px 10px;
+  margin-right: 10px; /* Add spacing between elements */
 }
 
-button {
-  width: 40%; /* Adjust width for the button */
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 1px 1px;
-  border-radius: 5px;
+#get-direction-button {
+  background-color: #4CAF50; /* Green background */
+  color: white;
   cursor: pointer;
 }
 
-
-/* Styling for A-Frame scene */
-a-scene {
-  width: 100%;
-  height: 250px; /* Adjust height for smaller screens */
+#get-direction-button:hover {
+  background-color: #3e8e41; /* Darker green on hover */
 }
 
+/* Map container */
 #map-container {
-  height: 300px; /* Adjust the height as needed */
-  border: 1px solid #ccc; /* Example border style */
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  height: calc(100vh - 60px); /* Adjust height based on top elements */
 }
 
+#map {
+  width: 100%;
+  height: 100%;
+}
 
-/* Additional styling for other elements */
-/* ... */
+/* Ensure 16:7 aspect ratio for the map */
+#map-container::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 7/16 = 43.75%, so 100 - 43.75 = 56.25 */
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
