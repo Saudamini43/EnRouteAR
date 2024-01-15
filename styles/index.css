@@ -1,66 +1,59 @@
-/* Basic styling for a clean look */
+/* Base styles for mobile-friendly layout */
 body {
-  font-family: sans-serif;
   margin: 0;
-  background-color: #f5f5f5;
+  font-family: sans-serif; /* Consistent font for mobile readability */
 }
 
-/* Ensure full-width elements on mobile */
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100%;
 }
 
-/* Top section styling */
+/* Top section for destination selection */
 #destination-select-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
+  background-color: #f0f0f0; /* Light background for contrast */
 }
 
 #select-destination {
-  width: 100%;
-  padding: 10px;
+  width: 80%; /* Adjust as needed */
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
 }
 
 #get-direction-button {
-  background-color: #007bff;
+  background-color: #007bff; /* Attractive blue color */
   color: #fff;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
 }
 
-/* Map container styling */
+/* Map container with 5:2 ratio and spacing */
 #map-container {
+  flex: 1;
   position: relative;
   padding: 10px;
-  height: 50%; /* Adjust as needed for 16:7 ratio */
-  width: 100%;
-  background-color: #fff;
 }
 
 #map {
   width: 100%;
-  height: 100%;
+  height: 0;
+  padding-bottom: 60%; /* Maintain 5:2 ratio */
   position: absolute;
   top: 0;
   left: 0;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  #map-container {
-    height: 60%; /* Adjust as needed for smaller screens */
+/* Media query for smaller screens (adjust as needed) */
+@media (max-width: 575px) {
+  #destination-select-container {
+    font-size: 0.9em; /* Slightly smaller text for compactness */
   }
 }
