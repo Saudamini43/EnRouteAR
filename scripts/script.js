@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to get directions from an API
     const getDirections = async (origin, destination) => {
-        const apiKey = 'YOUR_GOOGLE_MAPS_API_KEY';
+        const apiKey = AIzaSyAsPvQ6Xe3lxNDiIl8CH1AohNlcRu1s8PE;
         const apiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}&key=${apiKey}`;
     
         try {
