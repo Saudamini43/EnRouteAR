@@ -16,7 +16,7 @@ body, html {
   width: 90%;
   max-width: 400px; /* Adjust for smaller screens */
   margin: 0 auto; /* Removed negative margin */
-  margin-top: -25px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,14 +28,16 @@ body, html {
 
 #select-destination {
   flex: 1;
-  padding: 8px;
+  padding: 9px;
   border-radius: 8px;
+  margin-left: 25px;
+  margin-right: 10px;
 }
 
 #get-direction-button {
-  width: 40%;
+  width: 25%;
   padding: 10px 5px; /* Rounded padding */
-  margin-right: 15px;
+  margin-right: 25px;
   background-color: #0100ff;
   color: #fff;
   border: none;
@@ -54,11 +56,11 @@ body, html {
 
 #map-container {
   position: fixed;
-  bottom: 3%;
+  bottom: 4px;
   left: 50%;
   transform: translateX(-50.50%); /* Corrected for centering */
   width: 98%;
-  max-width: 400px;
+  max-width: 450px;
   height: 23vh;
   z-index: 1; /* Higher z-index for map container */
 }
