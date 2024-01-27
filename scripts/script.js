@@ -91,13 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
             marker.setAttribute('position', `${waypoint.maneuver.location[0]} ${waypoint.maneuver.location[1]} 0.5`);
             marker.setAttribute('text', `value: ${waypoint.maneuver.instruction}`);
             sceneEl.appendChild(marker);
-            
-       // Add arrow for each waypoint (except the last one)
-            if (index < waypoints.length - 1) {
-                const arrow = document.createElement('a-entity');
-                arrow.setAttribute('geometry', 'primitive: cone; radiusBottom: 0.1; height: 0.2');
-                arrow.setAttribute('rotation', '90 0 0');
-                arrow.setAttribute('position', `${waypoint.maneuver.location[0]} ${waypoint.maneuver.location[1
         });
     };
 
