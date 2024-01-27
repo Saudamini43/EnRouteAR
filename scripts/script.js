@@ -95,30 +95,33 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Function to handle destination selection and initiate directions
-    const selectDestination = async () => {
-        const selectedDestination = destinationSelectInput.value;
-        const destination = places.find(place => place.name === selectedDestination);
+const selectDestination = async () => {
+    const selectedDestination = destinationSelectInput.value;
+    const destination = places.find(place => place.name === selectedDestination);
 
-        if (destination) {
-            try {
-                const userLocation = await getCurrentLocation();
-                // Update map with user's current location
-                updateMapCenter(userLocation.latitude, userLocation.longitude);
+    if (destination) {
+        try {
+            const userLocation = await getCurrentLocation();
+            // Update map with user's current location
+            updateMapCenter(userLocation.latitude, userLocation.longitude);
 
-                const directionsData = await getDirections(userLocation, destination);
-                // Update AR elements
-                updateARDirections(directionsData);
+            const directionsData = await getDirections(userLocation, destination);
+            // Update AR elements
+            updateARDirections(directionsData);
 
-                // Update map with route
-                updateMapWithRoute(userLocation, destination);
-            } catch (error) {
-                console.error('Error in retrieving position', error);
-            }
-        } else {
-            console.log('Destination not found:', selectedDestination);
-            // Handle case when the selected destination is not found
+            // Update map with route
+            updateMapWithRoute(userLocation, destination);
+
+            // Disable AR.js debug UI
+            AR.debugUIEnabled = false;
+        } catch (error) {
+            console.error('Error in retrieving position', error);
         }
-    };
+    } else {
+        console.log('Destination not found:', selectedDestination);
+        // Handle case when the selected destination is not found
+    }
+};
 
     // Populate the dropdown with places from places.js
     places.forEach(place => {
