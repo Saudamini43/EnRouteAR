@@ -39,29 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             };
-             // Update map with user's current location
-             updateMapCenter(newLocation.latitude, newLocation.longitude);
-
-             // Update user's location marker
-             userLocationMarker.setLngLat([newLocation.longitude, newLocation.latitude]);
-
-             // TODO: Add logic to update AR elements based on new location
-         },
-         error => {
-             console.error('Error in watching position changes', error);
-         },
-         { enableHighAccuracy: true, maximumAge: 0, timeout: 27000 }
-     );
- } catch (error) {
-     console.error('Error initializing map and getting initial location:', error);
- }
-;
 
 // Rest of your code...
 
 // Stop watching user's location when the page is unloaded
-window.addEventListener('unload', () => {
- navigator.geolocation.clearWatch(watchPositionId);
+    window.addEventListener('unload', () => {
+    navigator.geolocation.clearWatch(watchPositionId);
 });
 
        // Function to add a marker on the map
