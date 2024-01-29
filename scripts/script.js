@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let map;
     let userLocationMarker; // Marker for user's location
     let routePath; // Path for the route
+    let watchPositionId; // ID for the watchPosition method
 
     // Function to initialize the map and get the user's current location
     const initMapAndLocation = async () => {
@@ -31,6 +32,38 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error initializing map and getting initial location:', error);
         }
     };
+    // Start watching user's location changes
+    watchPositionId = navigator.geolocation.watchPosition(
+        position => {
+            const newLocation = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            };
+             // Update map with user's current location
+             updateMapCenter(newLocation.latitude, newLocation.longitude);
+
+             // Update user's location marker
+             userLocationMarker.setLngLat([newLocation.longitude, newLocation.latitude]);
+
+             // TODO: Add logic to update AR elements based on new location
+         },
+         error => {
+             console.error('Error in watching position changes', error);
+         },
+         { enableHighAccuracy: true, maximumAge: 0, timeout: 27000 }
+     );
+ } catch (error) {
+     console.error('Error initializing map and getting initial location:', error);
+ }
+;
+
+// Rest of your code...
+
+// Stop watching user's location when the page is unloaded
+window.addEventListener('unload', () => {
+ navigator.geolocation.clearWatch(watchPositionId);
+});
+
        // Function to add a marker on the map
        const addMarker = (latitude, longitude, label) => {
         const marker = new mapboxgl.Marker()
