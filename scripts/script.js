@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('map');
     const sceneEl = document.querySelector('a-scene');
     let map;
+    let userLocationMarker; // Marker for user's location
+    let routePath; // Path for the route
 
     // Function to initialize the map and get the user's current location
     const initMapAndLocation = async () => {
@@ -19,16 +21,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Get the user's current location
             const userLocation = await getCurrentLocation();
-
             // Update map with user's current location
             updateMapCenter(userLocation.latitude, userLocation.longitude);
+
+
+            // Add marker for user's location
+            userLocationMarker = addMarker(userLocation.latitude, userLocation.longitude, 'User');
         } catch (error) {
             console.error('Error initializing map and getting initial location:', error);
         }
     };
+       // Function to add a marker on the map
+       const addMarker = (latitude, longitude, label) => {
+        const marker = new mapboxgl.Marker()
+            .setLngLat([longitude, latitude])
+            .setPopup(new mapboxgl.Popup().setHTML(label))
+            .addTo(map);
 
-    // Function to get the user's current location
-    const getCurrentLocation = () => {
+        return marker;
+    };
+        // Function to get the user's current location
+       const getCurrentLocation = () => {
         return new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(
                 position => resolve({
@@ -53,6 +66,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const updateMapWithRoute = (origin, destination) => {
         // Use Mapbox routing service here
         // ...
+    };
+    // Function to add a path for the route on the map
+    const addRoutePath = (origin, destination) => {
+        // Replace this with actual route path creation logic
+        const pathCoordinates = [
+            [origin.longitude, origin.latitude],
+            [destination.longitude, destination.latitude]
+        ];
+
+        return new mapboxgl.PathOverlay()
+            .setCoordinates(pathCoordinates)
+            .setColor('blue')
+            .addTo(map);
     };
 
     // Function to get directions from an API
@@ -92,6 +118,19 @@ document.addEventListener('DOMContentLoaded', function () {
             marker.setAttribute('text', `value: ${waypoint.maneuver.instruction}`);
             sceneEl.appendChild(marker);
         });
+    };
+         // Function to remove existing AR markers
+      const removeExistingARMarkers = () => {
+        const existingMarkers = document.querySelectorAll('a-marker');
+        existingMarkers.forEach(marker => marker.remove());
+    };
+
+        // Function to remove existing AR path
+        const removeExistingARPath = () => {
+        const existingPath = document.querySelector('a-entity[line]');
+        if (existingPath) {
+            existingPath.remove();
+        }
     };
 
     // Function to handle destination selection and initiate directions
